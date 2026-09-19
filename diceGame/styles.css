@@ -1,0 +1,79 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.winDeclare{
+    font-size: 5rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: green;
+}
+
+.draw{
+    text-align: center;
+    color: red;
+}
+
+.dies{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dies span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dies p{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.dies img{
+    height: 15rem;
+    padding: 1.5rem;
+}
+
+/* .dies img:hover{
+    background-color: red;
+} */
+
+#play, 
+.reset{
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: green;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    width: 20rem;
+}
+
+.reset{
+    background-color: red;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#play{
+    margin-bottom: 2rem;
+}
+
+#play:hover{
+    background-color: rgb(1, 70, 1);
+}
+
+.reset:hover{
+    background-color: black;
+}

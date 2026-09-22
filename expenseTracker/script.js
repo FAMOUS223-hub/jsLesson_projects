@@ -1,5 +1,42 @@
 const addExpensesBtn = document.querySelector('.add');
 const myContainer = document.querySelector('.container');
+const list = document.querySelector('.list');
+const filterDate = document.querySelector('#filterDate');
+const totalAmount = document.querySelector('.price');
+const totalCredit = document.querySelector('.credit');
+const totalDebit = document.querySelector('.debit');
+
+let allExpenses = [];
+
+try {
+    const savedExpenses = JSON.parse(localStorage.getItem('myList') || '[]');
+    allExpenses = Array.isArray(savedExpenses) ? savedExpenses : [];
+} catch {
+    localStorage.removeItem('myList');
+}
+
+function saveExpenses() {
+    localStorage.setItem('myList', JSON.stringify(allExpenses));
+}
+
+function updateTotals(expenses) {
+    const totals = expenses.reduce((summary, expense) => {
+        const amount = Number(expense.amount);
+
+        summary.total += amount;
+        if (expense.category === 'credit') {
+            summary.credit += amount;
+        } else {
+            summary.debit += amount;
+        }
+
+        return summary;
+    }, { total: 0, credit: 0, debit: 0 });
+
+    totalAmount.textContent = totals.total.toFixed(2);
+    totalCredit.textContent = totals.credit.toFixed(2);
+    totalDebit.textContent = totals.debit.toFixed(2);
+}
 
 function createExpenseModal() {
     const modal = document.createElement('div');
@@ -68,7 +105,8 @@ function createExpenseModal() {
     closeModalButton.addEventListener('click', () => {
         modal.style.display = 'none';
         document.body.classList.remove('modal-open');
-    });
+    }
+);
 
     submitButton.addEventListener('click', () => {
         if (
@@ -78,7 +116,7 @@ function createExpenseModal() {
             descriptionInput.value.trim() !== ''
         ) {
             warningText.style.display = 'none';
-            createExpense(
+            addExpense(
                 titleInput.value.trim(),
                 dateInput.value,
                 amountInput.value.trim(),
@@ -131,14 +169,12 @@ function createExpenseModal() {
         }
     });
 
-
     return modal;
 }
 
-
-const list = document.querySelector('.list')
-function createExpense(title, date, amount, description, category){
+function createExpense(title, date, amount, description, category, id){
     const myExpense = document.createElement('div');
+    myExpense.dataset.id = id;
         myExpense.classList.add('myExpense');
         myExpense.dataset.date = date;
         if (category === 'debit') {
@@ -176,7 +212,11 @@ function createExpense(title, date, amount, description, category){
     myDelBtn.classList.add('delet')
     myDelBtn.src = 'img/close.svg';
     myDelBtn.alt = 'Delete expense';
-    myDelBtn.addEventListener('click', () => myExpense.remove());
+    myDelBtn.addEventListener('click', () => {
+        allExpenses = allExpenses.filter((expense) => expense.id !== id);
+        saveExpenses();
+        renderExpenses();
+    });
 
 
     list.appendChild(myExpense);
@@ -187,7 +227,39 @@ function createExpense(title, date, amount, description, category){
     myExpense.appendChild(desc)
     myExpense.appendChild(myDelBtn)
 
+}
 
+function renderExpenses() {
+    const selectedDate = filterDate.value;
+    const visibleExpenses = selectedDate
+        ? allExpenses.filter((expense) => expense.date === selectedDate)
+        : allExpenses;
+
+    list.replaceChildren();
+    visibleExpenses.forEach((expense) => {
+        createExpense(
+            expense.title,
+            expense.date,
+            expense.amount,
+            expense.description,
+            expense.category,
+            expense.id
+        );
+    });
+    updateTotals(visibleExpenses);
+}
+
+function addExpense(title, date, amount, description, category) {
+    allExpenses.push({
+        id: `${Date.now()}-${Math.random()}`,
+        title,
+        date,
+        amount: Number(amount),
+        description,
+        category
+    });
+    saveExpenses();
+    renderExpenses();
 }
 
 function addToExpenses() {
@@ -206,4 +278,6 @@ function addToExpenses() {
 }
 
 addExpensesBtn.addEventListener('click', addToExpenses);
+filterDate.addEventListener('change', renderExpenses);
+renderExpenses();
 

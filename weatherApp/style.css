@@ -1,0 +1,239 @@
+:root{
+    --background: #21140d;
+    --panel: rgba(38, 25, 18, 0.86);
+    --panel-light: rgba(99, 57, 28, 0.72);
+    --text: #fff8ed;
+    --muted: #e0c7a9;
+    --accent: #ffc06b;
+    --accent-soft: #ffe7bf;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    background-image: linear-gradient(rgba(30, 17, 9, 0.42), rgba(24, 13, 7, 0.72)), url('img/weather.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--text);
+}
+
+.weatherApp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100rem;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+.brand{
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.weather{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.weather input{
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(255, 192, 107, 0.36);
+    border-radius: 0.75rem;
+    outline: none;
+    background: rgba(38, 25, 18, 0.78);
+    backdrop-filter: blur(8px);
+    color: var(--text);
+    font-size: 1.1rem;
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.weather input::placeholder{
+    color: var(--muted);
+}
+
+.weather input:focus{
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 192, 107, 0.2);
+}
+
+.cityInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.city{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 3rem;
+    padding: 3rem 1rem 2.5rem;
+}
+
+.city .cityName{
+    margin-bottom: 0.75rem;
+    color: var(--text);
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1;
+}
+
+.city .chance{
+    color: var(--muted);
+    font-size: 1.25rem;
+}
+
+.city .percent{
+    color: var(--accent-soft);
+    font-weight: bold;
+}
+
+.city .degree{
+    margin-top: 1rem;
+    color: var(--accent);
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.city > img{
+    width: 220px;
+    height: auto;
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.25));
+}
+
+.cityForecast{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 224, 178, 0.25);
+    border-radius: 1rem;
+    background: var(--panel);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.cityForecast h3{
+    color: var(--text);
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+}
+
+.forecastInfo{
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+.data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 1rem 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 0.7rem;
+    background: var(--panel-light);
+    transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.data:hover{
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.data img{
+    height: 42px;
+}
+
+.data .time{
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.data .forcastDegree{
+    color: var(--accent-soft);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+@media (max-width: 700px){
+    .weatherApp{
+        align-items: flex-start;
+        padding: 1rem;
+    }
+
+    .cityInfo{
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .city{
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 2.5rem 0 2rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .city .cityName{
+        font-size: 2.5rem;
+        overflow-wrap: anywhere;
+    }
+
+    .city .chance{
+        font-size: 1.25rem;
+    }
+
+    .city .degree{
+        font-size: 3rem;
+    }
+
+    .city > img{
+        height: auto;
+        max-width: 65%;
+    }
+
+    .cityForecast{
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .cityForecast h3{
+        font-size: 1.75rem;
+    }
+
+    .forecastInfo{
+        display: grid;
+        gap: 0.75rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .data{
+        gap: 0.5rem;
+        padding: 0.75rem 0.5rem;
+    }
+
+    .data .forcastDegree{
+        font-size: 1.5rem;
+    }
+}

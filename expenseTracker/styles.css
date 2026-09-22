@@ -180,6 +180,8 @@ body.modal-open .container {
     border: 1px solid var(--line);
     border-radius: 1.1rem;
     padding: 1.25rem;
+    width: 100%;
+    min-width: 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -194,7 +196,8 @@ body.modal-open .container {
     flex-direction: column;
     gap: 1rem;
     flex: 1 1 320px;
-    min-width: min(100%, 280px);
+    min-width: 0;
+    max-width: 100%;
     padding: 1.4rem;
     border: 1px solid transparent;
     border-radius: 1rem;
@@ -215,6 +218,7 @@ body.modal-open .container {
     color: var(--ink);
     font-weight: 800;
     padding-right: 3rem;
+    overflow-wrap: anywhere;
 }
 
 .categoryy {
@@ -251,12 +255,18 @@ body.modal-open .container {
     font-size: clamp(2.1rem, 3vw, 2.8rem);
     font-weight: 800;
     line-height: 1;
+    overflow-wrap: anywhere;
+}
+
+.debit-card .amountToTrack {
+    color: var(--danger-dark);
 }
 
 .description {
     color: var(--muted);
     line-height: 1.7;
     font-size: 1rem;
+    overflow-wrap: anywhere;
 }
 
 .price,

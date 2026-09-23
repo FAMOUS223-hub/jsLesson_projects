@@ -1,0 +1,176 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.174);
+    width: 100%;
+    max-width: 500px;
+}
+
+.myApp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.myApp h1{
+    color: rgb(24, 81, 24);
+    margin-bottom: 2rem;
+}
+
+input{
+    padding: 12px 16px;
+    border: 2px solid #d9e2d9;
+    border-radius: 10px;
+    height: 44px;
+    min-width: 0;
+    flex: 1;
+    font: inherit;
+    color: #234323;
+    background-color: #fbfdfb;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder{
+    color: #8b998b;
+}
+
+input:focus{
+    border-color: rgb(24, 81, 24);
+    box-shadow: 0 0 0 3px rgba(24, 81, 24, 0.14);
+}
+
+.addTask{
+    padding: 12px 22px;
+    border: none;
+    background-color: rgb(81, 24, 24);
+    color: white;
+    border-radius: 10px;
+    height: 44px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.addTask:hover{
+    background-color: rgb(35, 105, 35);
+    box-shadow: 0 4px 10px rgba(24, 81, 24, 0.25);
+    transform: translateY(-1px);
+}
+
+.addTask:active{
+    transform: translateY(0);
+}
+
+.notification{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ae1212;
+    color: #f8f8f8;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.taskList{
+    width: 100%;
+}
+
+.taskList li{
+    list-style: none;
+    margin-bottom: 0.5rem;
+    border-bottom:0.5px solid rgba(0, 0, 0, 0.499);
+    margin-top: 10px;
+    cursor: pointer;
+
+}
+.todoContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 400px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.deleteBtn{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.deleteBtn:hover{
+    transform: scale(1.2);
+    transition: transform 0.2s ease;
+    background-color: rgba(255, 0, 0, 0.2);
+    border-radius: 50%;
+}
+
+.inputGroup {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 430px;
+}
+
+.inputGroup input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+}
+
+.addTask {
+    flex: 0 0 auto;
+    padding: 0 22px;
+    height: 44px;
+    border: none;
+    border-radius: 10px;
+    background: rgb(24, 81, 24);
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.addTask:hover {
+    background: rgb(35, 105, 35);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(24, 81, 24, 0.25);
+}
+
+@media (max-width: 450px) {
+    .inputGroup {
+        flex-direction: column;
+    }
+
+    .inputGroup input,
+    .addTask {
+        width: 100%;
+    }
+}

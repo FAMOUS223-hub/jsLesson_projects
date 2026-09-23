@@ -2,12 +2,45 @@ import userIcon from './assets/user.svg'
 import robotIcon from './assets/robot.svg'
 import { useState } from 'react'
 
-function InputField({ sendMessage }) {
+function InputField({ setChatMessages }) {
+  const [inputText, setInputText] = useState('')
+
+  function saveData(event){
+    setInputText(event.target.value)
+  }
+
+  function sendMessage(event){
+    event.preventDefault()
+
+    if (!inputText.trim()) return
+
+    setChatMessages((currentMessages) => [
+      ...currentMessages,
+      {
+        message: inputText,
+        sender: 'user',
+        id: crypto.randomUUID()
+      },
+      {
+        message: `You said: ${inputText}`,
+        sender: 'robot',
+        id: crypto.randomUUID()
+      }
+    ])
+
+    setInputText('')
+  }
+
   return( 
-    <>
-    <input type="text" placeholder="Type your message..." />
-   <button onClick={sendMessage}>Send</button>
-    </>
+    <form onSubmit={sendMessage}>
+      <input
+        type="text"
+        placeholder="Type your message..."
+        onChange={saveData}
+        value={inputText}
+      />
+      <button type="submit">Send</button>
+    </form>
 
   )
 }
@@ -31,55 +64,40 @@ const ChatMessage = ({ message, sender }) => {
 const Messages = () => {
   const [chatMessages, setChatMessages] = useState([
     {
-      message: 'Hello chatbot', 
-      sender: 'user', 
-      id: 'id1' 
-
+      message: 'Hello chatbot',
+      sender: 'user',
+      id: 'id1'
     },
-    { 
-      message: 'Hello! How can I help you?', 
-      sender: 'robot', 
-      id: 'id2' 
-
+    {
+      message: 'Hello! How can I help you?',
+      sender: 'robot',
+      id: 'id2'
     },
-    { 
-      message: "Can you get me today's date?", 
-      sender: 'user', 
-      id: 'id3' 
-
+    {
+      message: "Can you get me today's date?",
+      sender: 'user',
+      id: 'id3'
     },
-    { 
-      message: 'Today is September 27.', 
-      sender: 'robot', 
-      id: 'id4' 
-
+    {
+      message: 'Today is September 27.',
+      sender: 'robot',
+      id: 'id4'
     }
   ])
 
-  function sendMessage() {
-    setChatMessages([
-      ...chatMessages,
-      {
-        message: 'test',
-        sender: 'user',
-        id: crypto.randomUUID()
-      }
-    ])
-  }
-
   return (
     <>
-      <InputField sendMessage={sendMessage} />
+      <InputField
+        setChatMessages={setChatMessages}
+      />
 
       {chatMessages.map((message) => (
         <ChatMessage
           key={message.id}
           message={message.message}
           sender={message.sender}
-
         />
       ))}
-
     </>
   )
 }

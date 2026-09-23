@@ -1,0 +1,177 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2.4rem 5vw 0;
+  background: #e8eef7;
+}
+
+nav {
+  width: min(100%, 118rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.8rem 2.2rem;
+  background: white;
+  border: 1px solid rgba(23, 25, 31, 0.08);
+  border-radius: 1.2rem;
+  position: relative;
+  z-index: 999;
+  box-shadow: 0 1.5rem 4rem rgba(30, 37, 50, 0.07);
+  backdrop-filter: blur(1.4rem);
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #555b68;
+  font-size: 1.35rem;
+  font-weight: 500;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.7rem;
+  transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+nav ul li a:hover {
+  background: #e9efff;
+  color: #165dff;
+  transform: translateY(-1px);
+}
+
+nav ul li a:focus-visible,
+.menuButton:focus-visible,
+.cta:focus-visible {
+  outline: 3px solid rgba(22, 93, 255, 0.32);
+  outline-offset: 3px;
+}
+
+nav span {
+  color: #17191f;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+nav span:hover {
+  cursor: pointer;
+}
+
+.menuButton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hamburger {
+  height: 2.6rem;
+  width: 2.6rem;
+  padding: 0.35rem;
+  border-radius: 0.6rem;
+  transition: background 180ms ease;
+}
+
+.hamburger:hover {
+  background: #e9efff;
+}
+
+.toShow {
+  display: none;
+}
+
+@media (max-width: 64rem) {
+  .nav {
+    padding: 1.6rem 2rem 0;
+  }
+
+  nav {
+    padding: 1.5rem 1.6rem;
+  }
+
+  .desktopLinks {
+    display: none;
+  }
+
+  .menuButton {
+    display: flex;
+    margin-left: auto;
+    padding: 0;
+  }
+
+  .toShow {
+    position: absolute;
+    top: calc(100% + 0.8rem);
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.3rem;
+    padding: 0.8rem;
+    border: 1px solid rgba(23, 25, 31, 0.08);
+    border-radius: 1rem;
+    background: #e8eef7;
+    box-shadow: 0 1.5rem 4rem rgba(30, 37, 50, 0.1);
+    backdrop-filter: blur(1.4rem);
+  }
+
+  .toShow li {
+    width: 100%;
+  }
+
+  .toShow li a {
+    display: block;
+    font-size: 1.35rem;
+    padding: 1.1rem 1.2rem;
+  }
+
+  .toShow li:last-child {
+    position: absolute;
+    top: -5.2rem;
+    right: 1.6rem;
+    width: auto;
+  }
+
+  .toShow li:last-child .menuButton {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 40rem) {
+  .nav {
+    padding-right: 1.2rem;
+    padding-left: 1.2rem;
+  }
+
+  nav {
+    padding: 1.3rem 1.4rem;
+  }
+
+  nav span {
+    font-size: 1.8rem;
+  }
+}

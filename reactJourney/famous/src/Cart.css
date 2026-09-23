@@ -1,0 +1,30 @@
+html{
+    display: flex;
+}
+.myItems{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 17, 92, 0.993);
+    color: white;
+    padding: 2rem;
+    /* gap: 2rem; */
+    width: fit-content;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+
+button{
+    padding: 1rem;
+    font-size: 1.4rem;
+    background-color: orange;
+    color: white;
+}
+
+.productName{
+    font-size: 2rem;
+    font-weight: 900;
+    color: orange;
+    margin-bottom: -0.3rem;
+}
+

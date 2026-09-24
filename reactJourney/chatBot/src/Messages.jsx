@@ -1,70 +1,10 @@
-import userIcon from './assets/user.svg'
-import robotIcon from './assets/robot.svg'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import ChatInput from './components/ChatInput.jsx'
+import ChatMessage from './components/ChatMessage.jsx'
 import './Messages.css'
 
-function InputField({ setChatMessages }) {
-  const [inputText, setInputText] = useState('')
-
-  function saveData(event){
-    setInputText(event.target.value)
-  }
-
-  function sendMessage(event){
-    event.preventDefault()
-
-    if (!inputText.trim()) return
-
-    setChatMessages((currentMessages) => [
-      ...currentMessages,
-      {
-        message: inputText,
-        sender: 'user',
-        id: crypto.randomUUID()
-      },
-      {
-        message: `You said: ${inputText}`,
-        sender: 'robot',
-        id: crypto.randomUUID()
-      }
-    ])
-
-    setInputText('')
-  }
-
-  return( 
-    <div className="chatContainer">
-      <form onSubmit={sendMessage} className="chatForm">
-      <input
-        type="text"
-        placeholder="Type your message..."
-        onChange={saveData}
-        value={inputText}
-        className='chatInput'
-      />
-      <button type="submit" className='send-button'>Send</button>
-    </form>
-    </div>
-
-  )
-}
-
-const ChatMessage = ({ message, sender }) => {
-  const isUser = sender === 'user'
-  const isRobot = sender === 'robot'
-
-  return (
-    <div className={isRobot ? 'robot' : 'user'}>
-
-      {isRobot && <img className="messageIcon" src={robotIcon} alt="Robot" width="30" />}
-      <span className="messageText">{message}</span>
-      {isUser && <img className="messageIcon" src={userIcon} alt="User" width="30" />}
-    </div>
-
-  )
-}
-
 const Messages = () => {
+  const messagesEndRef = useRef(null)
   const [chatMessages, setChatMessages] = useState([
     {
       message: 'Hello chatbot',
@@ -88,9 +28,13 @@ const Messages = () => {
     }
   ])
 
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [chatMessages])
+
   return (
     <div className="app">
-      <InputField
+      <ChatInput
         setChatMessages={setChatMessages}
       />
 
@@ -102,6 +46,7 @@ const Messages = () => {
             sender={message.sender}
           />
         ))}
+        <div ref={messagesEndRef} />
       </div>
     </div>
   )

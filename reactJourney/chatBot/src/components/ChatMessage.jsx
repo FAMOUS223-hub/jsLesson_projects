@@ -1,32 +1,16 @@
-import user from '../assets/user.svg'
-import robot from '../assets/robot.svg'
-const ChatMessage = ({ message, sender}) => {
-  /* const {message,sender} = props; //The {message,sender} can be parsed into the function ike a parameter
-  const message = props.message
-  const sender = props.sender
+import userIcon from '../assets/user.svg'
+import robotIcon from '../assets/robot.svg'
 
-  if(sender === 'robot'){
-    return(
-    <div>
-        <img src={robot} alt="user profile" width={50} />
-        {message}
-   </div>
-    )
-  } */ 
+const ChatMessage = ({ message, sender }) => {
+  const isUser = sender === 'user'
+  const isRobot = sender === 'robot'
+
   return (
-    <>
-    <div>
-    {sender === 'robot' && (
-      <img src={robot} width={50} /> )} 
-
-      {message}
-      
-     {sender === 'user'  && (
-        <img src = {user} width={50} />)}
+    <div className={isRobot ? 'robot' : 'user'}>
+      {isRobot && <img className="messageIcon" src={robotIcon} alt="Robot" width="30" />}
+      <span className="messageText">{message}</span>
+      {isUser && <img className="messageIcon" src={userIcon} alt="User" width="30" />}
     </div>
-    
-    </>
-    
   )
 }
 

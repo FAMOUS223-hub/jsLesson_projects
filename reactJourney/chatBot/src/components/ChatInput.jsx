@@ -1,47 +1,47 @@
-const ChatInput = () => {
-  const myMessages = [
-{
-  message: 'Hello chatbot', 
-  sender: 'user', 
-  id: 'id1' 
+import { useState } from 'react'
 
-},
-{ 
-  message: 'Hello! How can I help you?', 
-  sender: 'robot', 
-  id: 'id2' 
+const ChatInput = ({ setChatMessages }) => {
+  const [inputText, setInputText] = useState('')
 
-},
-{ 
-  message: "Can you get me today's date?", 
-  sender: 'user', 
-  id: 'id3' 
+  function saveData(event){
+    setInputText(event.target.value)
+  }
 
-},
-{ 
-  message: 'Today is September 27.', 
-  sender: 'robot', 
-  id: 'id4' 
+  function sendMessage(event){
+    event.preventDefault()
 
-}
-]
+    if (!inputText.trim()) return
 
-function sendMessage(){
-  myMessages.push({
-    message: 'test',
-    sender: 'user',
-    id: crypto.randomUUID()
-  })
+    setChatMessages((currentMessages) => [
+      ...currentMessages,
+      {
+        message: inputText,
+        sender: 'user',
+        id: crypto.randomUUID()
+      },
+      {
+        message: `You said: ${inputText}`,
+        sender: 'robot',
+        id: crypto.randomUUID()
+      }
+    ])
 
-  console.log(myMessages)
-}
+    setInputText('')
+  }
+
   return (
-   <>
+    <div className="chatContainer">
+      <form onSubmit={sendMessage} className="chatForm">
       <input
-          placeholder="Send a message to Chatbot"   size={30 }
+        type="text"
+        placeholder="Type your message..."
+        onChange={saveData}
+        value={inputText}
+        className="chatInput"
       />
-      <button onClick={sendMessage}>Send</button>
-   </>
+      <button type="submit" className="send-button">Send</button>
+      </form>
+    </div>
   )
 }
 

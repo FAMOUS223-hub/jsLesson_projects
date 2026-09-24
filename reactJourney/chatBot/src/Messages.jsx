@@ -1,6 +1,7 @@
 import userIcon from './assets/user.svg'
 import robotIcon from './assets/robot.svg'
 import { useState } from 'react'
+import './Messages.css'
 
 function InputField({ setChatMessages }) {
   const [inputText, setInputText] = useState('')
@@ -32,15 +33,18 @@ function InputField({ setChatMessages }) {
   }
 
   return( 
-    <form onSubmit={sendMessage}>
+    <div className="chatContainer">
+      <form onSubmit={sendMessage} className="chatForm">
       <input
         type="text"
         placeholder="Type your message..."
         onChange={saveData}
         value={inputText}
+        className='chatInput'
       />
-      <button type="submit">Send</button>
+      <button type="submit" className='send-button'>Send</button>
     </form>
+    </div>
 
   )
 }
@@ -50,14 +54,13 @@ const ChatMessage = ({ message, sender }) => {
   const isRobot = sender === 'robot'
 
   return (
-    <>
-    <div className="chat-message">
-      {isRobot && <img src={robotIcon} alt="Robot" width="30" />}
-      <span>{message}</span>
-      {isUser && <img src={userIcon} alt="User" width="30" />}
+    <div className={isRobot ? 'robot' : 'user'}>
+
+      {isRobot && <img className="messageIcon" src={robotIcon} alt="Robot" width="30" />}
+      <span className="messageText">{message}</span>
+      {isUser && <img className="messageIcon" src={userIcon} alt="User" width="30" />}
     </div>
 
-    </>
   )
 }
 
@@ -86,19 +89,21 @@ const Messages = () => {
   ])
 
   return (
-    <>
+    <div className="app">
       <InputField
         setChatMessages={setChatMessages}
       />
 
-      {chatMessages.map((message) => (
-        <ChatMessage
-          key={message.id}
-          message={message.message}
-          sender={message.sender}
-        />
-      ))}
-    </>
+      <div className="messageList">
+        {chatMessages.map((message) => (
+          <ChatMessage
+            key={message.id}
+            message={message.message}
+            sender={message.sender}
+          />
+        ))}
+      </div>
+    </div>
   )
 }
 

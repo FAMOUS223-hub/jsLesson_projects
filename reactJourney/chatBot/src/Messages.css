@@ -1,0 +1,125 @@
+.send-button{
+    color: #ffffff;
+    padding: 11px 18px;
+    border: none;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #007aff;
+    cursor: pointer;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.send-button:hover {
+    background-color: #006fe6;
+    transform: translateY(-1px);
+}
+
+.send-button:active {
+    transform: scale(0.96);
+}
+
+.chatInput{
+    width: 100%;
+    padding: 11px 16px;
+    border: 1px solid #d1d1d6;
+    border-radius: 999px;
+    font-size: 15px;
+    background-color: #f2f2f7;
+    color: #1c1c1e;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.chatInput:focus {
+    outline: none;
+    border-color: #007aff;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.16);
+}
+
+.chatContainer{
+    display: flex;
+    padding: 14px 16px;
+    background-color: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(60, 60, 67, 0.12);
+    border-radius: 22px;
+    box-shadow: 0 8px 24px rgba(60, 60, 67, 0.12);
+    backdrop-filter: blur(16px);
+}
+
+.chatForm {
+    display: flex;
+    width: 100%;
+    gap: 9px;
+    align-items: center;
+}
+
+.app{
+    max-width: 600px;
+    margin: 48px auto;
+    padding: 0 20px;
+    color: #1c1c1e;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+.user{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 9px;
+    margin-top: 14px;
+}
+
+.robot {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 14px;
+}
+
+.messageText {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 20px;
+    line-height: 1.4;
+    font-size: 15px;
+}
+
+.user .messageText {
+    color: #ffffff;
+    background-color: #007aff;
+    border-bottom-right-radius: 6px;
+}
+
+.robot .messageText {
+    color: #1c1c1e;
+    background-color: #e5e5ea;
+    border-bottom-left-radius: 6px;
+}
+
+.messageIcon {
+    flex: 0 0 30px;
+}
+
+.messageList {
+    padding: 4px 8px 12px;
+}
+
+@media (max-width: 480px) {
+    .app {
+        margin: 24px auto;
+        padding: 0 12px;
+    }
+
+    .chatContainer {
+        padding: 12px;
+        border-radius: 18px;
+    }
+
+    .chatForm {
+        gap: 8px;
+    }
+
+    .send-button {
+        padding: 10px 15px;
+    }
+}

@@ -34,7 +34,7 @@ Update the HTML page
 
 ## The Three Files
 
-### `index.html`
+### `/`
 
 This is the structure of the page. It contains the search input, city name, temperature, and forecast boxes.
 
@@ -48,7 +48,7 @@ This is where the logic lives. It listens for user actions, requests data, and c
 
 ### Important: Check the JavaScript Filename
 
-At the bottom of your current `index.html`, the page loads:
+At the bottom of your current `/`, the page loads:
 
 ```html
 <script src="myscript.js"></script>
@@ -807,7 +807,7 @@ getWeather('London');
 
 ## How to Test It
 
-1. Open `weatherApp/index.html` in your browser.
+1. Open `weatherApp//` in your browser.
 2. Wait for the default London weather to load.
 3. Type `Paris` into the search box.
 4. Press `Enter`.

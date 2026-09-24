@@ -4,7 +4,7 @@ A two-player dice game built with HTML, CSS, and vanilla JavaScript. Each round 
 
 ## How to Run
 
-Open `index.html` in a web browser. No build tools or dependencies are required.
+Open `/` in a web browser. No build tools or dependencies are required.
 
 ## How to Play
 
@@ -15,7 +15,7 @@ Open `index.html` in a web browser. No build tools or dependencies are required.
 
 ## Project Files
 
-- `index.html` - Page structure and game controls.
+- `/` - Page structure and game controls.
 - `app.js` - Dice rolls, winner selection, score handling, and local storage.
 - `script.js` - A separate JavaScript constructor example for creating bell boy objects; it is not loaded by the page.
 - `styles.css` - Layout, typography, colors, and button styles.

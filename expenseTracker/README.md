@@ -4,7 +4,7 @@ A browser-based expense tracker built with HTML, CSS, and vanilla JavaScript. It
 
 ## How to Run
 
-Open `index.html` in a web browser. No build tools, server, or external dependencies are required.
+Open `/` in a web browser. No build tools, server, or external dependencies are required.
 
 ## How to Use
 
@@ -19,7 +19,7 @@ The form also supports keyboard submission: press Enter in the title or amount f
 
 ## Project Files
 
-- `index.html` - Tracker layout, add control, date input, totals area, and expense list.
+- `/` - Tracker layout, add control, date input, totals area, and expense list.
 - `script.js` - Modal creation, form validation, expense rendering, and deletion.
 - `styles.css` - Responsive layout, modal, expense cards, and credit/debit styling.
 - `img/` - Add and delete icons.

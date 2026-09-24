@@ -37,7 +37,14 @@
 }
 
 .chatContainer{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
     display: flex;
+    width: min(600px, calc(100% - 24px));
+    margin: 0 auto 12px;
     padding: 14px 16px;
     background-color: rgba(255, 255, 255, 0.88);
     border: 1px solid rgba(60, 60, 67, 0.12);
@@ -56,7 +63,7 @@
 .app{
     max-width: 600px;
     margin: 48px auto;
-    padding: 0 20px;
+    padding: 0 20px 110px;
     color: #1c1c1e;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
 }
@@ -107,12 +114,13 @@
 @media (max-width: 480px) {
     .app {
         margin: 24px auto;
-        padding: 0 12px;
+        padding: 0 12px 110px;
     }
 
     .chatContainer {
         padding: 12px;
         border-radius: 18px;
+        margin-bottom: 8px;
     }
 
     .chatForm {

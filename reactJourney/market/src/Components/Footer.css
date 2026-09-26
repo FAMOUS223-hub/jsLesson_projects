@@ -1,0 +1,228 @@
+/* ==========================================================================
+   Site footer — dark band, hairline dividers, Apple-style restraint
+   ========================================================================== */
+
+.siteFooter {
+  margin-top: auto;
+  flex-shrink: 0;
+  color: #f5f5f7;
+  background: linear-gradient(180deg, #242426 0%, #1d1d1f 55%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footerTop {
+  padding: clamp(3.5rem, 6vw, 5rem) var(--gutter) clamp(2.5rem, 4vw, 3.25rem);
+}
+
+.myFooter {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.7fr 0.9fr 1.1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.footerCol {
+  min-width: 0;
+}
+
+/* ------------------------------------------------------------ column head */
+
+.colTitle {
+  margin: 0 0 1.15rem;
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #86868b;
+}
+
+/* ------------------------------------------------------------------ brand */
+
+.brand {
+  margin: 0 0 0.9rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: #f5f5f7;
+}
+
+.brand span {
+  color: var(--color-accent);
+}
+
+.tagline {
+  max-width: 30rem;
+  font-size: var(--text-small);
+  line-height: 1.65;
+  color: #a1a1a6;
+}
+
+/* ----------------------------------------------------------------- icons */
+
+.footerIcon {
+  display: block;
+  width: 1.15rem;
+  height: 1.15rem;
+  background-color: currentColor;
+  -webkit-mask: center / contain no-repeat;
+  mask: center / contain no-repeat;
+}
+
+.icons {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.icons a {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  color: #a1a1a6;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  transition: color var(--speed) var(--ease), background-color var(--speed) var(--ease),
+    border-color var(--speed) var(--ease), transform var(--speed) var(--ease);
+}
+
+.icons a:hover {
+  color: #fff;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------------------- nav */
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navList a {
+  display: inline-block;
+  padding: 0.3rem 0;
+  font-size: var(--text-small);
+  color: #a1a1a6;
+  transition: color var(--speed) var(--ease), transform var(--speed) var(--ease);
+}
+
+.navList a:hover {
+  color: #f5f5f7;
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------- contact */
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contactList a {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: var(--text-small);
+  color: #a1a1a6;
+  transition: color var(--speed) var(--ease);
+}
+
+.contactList .footerIcon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  transition: color var(--speed) var(--ease);
+}
+
+.contactList a:hover {
+  color: #f5f5f7;
+}
+
+.contactList a:hover .footerIcon {
+  color: #f5f5f7;
+}
+
+/* ----------------------------------------------------------- bottom bar */
+
+.footerBottom {
+  background: rgba(0, 0, 0, 0.22);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bottomInner {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 1.1rem var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+.waterMark,
+.credit {
+  font-size: var(--text-caption);
+  color: #86868b;
+}
+
+.siteFooter .legal {
+  display: flex;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.siteFooter .legal a {
+  font-size: var(--text-caption);
+  color: #86868b;
+  transition: color var(--speed) var(--ease);
+}
+
+.siteFooter .legal a:hover {
+  color: #f5f5f7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 64rem) {
+  .myFooter {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .brandCol {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 36rem) {
+  .myFooter {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .bottomInner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+}

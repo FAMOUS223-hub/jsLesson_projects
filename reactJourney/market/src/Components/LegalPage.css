@@ -1,0 +1,163 @@
+/* ==========================================================================
+   Legal pages (privacy, terms)
+   ========================================================================== */
+
+.legalPage {
+  flex: 1 0 auto;
+  padding-bottom: var(--section-y);
+}
+
+/* ---------------------------------------------------------------- header */
+
+.legalHead {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) var(--gutter) clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.legalTitle {
+  font-size: var(--text-display);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.032em;
+  color: var(--color-ink);
+}
+
+.legalUpdated {
+  margin: 0;
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+
+.legalIntro {
+  max-width: 42rem;
+  margin: 0.5rem 0 0;
+  font-size: var(--text-headline);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-2);
+}
+
+/* ------------------------------------------------------------------ body */
+
+.legalBody {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: start;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 5vw, 4rem) var(--gutter) 0;
+}
+
+/* ------------------------------------------------------------------- toc */
+
+.legalToc {
+  position: sticky;
+  top: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.35rem;
+  background: var(--color-alt);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius);
+}
+
+.legalTocTitle {
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+
+.legalTocList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legalTocLink {
+  display: block;
+  padding: 0.3rem 0;
+  font-size: var(--text-small);
+  line-height: 1.4;
+  color: var(--color-ink-2);
+  transition: color var(--speed) var(--ease), transform var(--speed) var(--ease);
+}
+
+.legalTocLink:hover {
+  color: var(--color-accent);
+  transform: translateX(3px);
+}
+
+/* -------------------------------------------------------------- sections */
+
+.legalSections {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 3.5vw, 2.75rem);
+  max-width: 44rem;
+}
+
+.legalSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-bottom: clamp(2rem, 3.5vw, 2.75rem);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.legalSection:last-of-type {
+  border-bottom: none;
+}
+
+.legalSectionTitle {
+  font-size: var(--text-headline);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--color-ink);
+}
+
+.legalText {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.7;
+  letter-spacing: -0.005em;
+  color: var(--color-ink-2);
+}
+
+.legalFoot {
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 0.5rem;
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 64rem) {
+  .legalBody {
+    grid-template-columns: 1fr;
+  }
+
+  .legalToc {
+    position: static;
+  }
+
+  .legalSections {
+    max-width: none;
+  }
+}
